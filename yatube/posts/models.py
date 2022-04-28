@@ -9,6 +9,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     group = models.ForeignKey('Group', blank=True, null=True, on_delete=models.PROTECT)
 
+    def __str__(self) -> str:
+        return self.text
+
 class Group(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
